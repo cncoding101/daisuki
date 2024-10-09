@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Gateway Web",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/web/build/src/server.js", // Path to your gateway entry point
+      "outFiles": ["${workspaceRoot}/backend/web/build/**/*.js"],
+      "skipFiles": ["<node_internals>/**"],
+      "preLaunchTask": "npm: build - backend/web"
+    }
+  ]
+}

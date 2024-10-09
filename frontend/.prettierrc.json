@@ -4,5 +4,7 @@
   "bracketSpacing": true,
   "singleQuote": true,
   "jsxSingleQuote": true,
+  "endOfLine": "auto",
+  "tabWidth": 2,
   "plugins": ["prettier-plugin-tailwindcss"]
 }
