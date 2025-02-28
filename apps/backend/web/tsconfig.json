@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "module": "CommonJS",
+    "outDir": "./build",
+  },
+  "extends": ["../../../base-tsconfig.json"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"],
+}

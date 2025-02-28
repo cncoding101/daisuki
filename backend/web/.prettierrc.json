@@ -1,9 +1,0 @@
-{
-  "arrowParens": "always",
-  "printWidth": 120,
-  "bracketSpacing": true,
-  "singleQuote": true,
-  "jsxSingleQuote": true,
-  "endOfLine": "auto",
-  "tabWidth": 2
-}

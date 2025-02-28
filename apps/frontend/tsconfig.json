@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@pages/*": ["pages/*"],
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
+      "@services/*": ["services/*"],
+      "@styles/*": ["styles/*"],
+      "@store/*": ["store/*"],
+      "@monorepo/web-api": ["../backend/web/src/index.ts"]
+    }
+  },
+  "extends": ["../../base-tsconfig.json"],
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../backend/web"
+    }
+  ],
+}
