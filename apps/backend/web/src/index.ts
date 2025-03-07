@@ -1,22 +1,22 @@
-import express from 'express';
-import cors from 'cors';
-import compression from 'compression';
-import helmet from 'helmet';
-import path from 'path';
-import pino from 'pino-http';
 import bodyParser from 'body-parser';
-import YAML from 'yamljs';
-import swaggerUi from 'swagger-ui-express';
+import compression from 'compression';
+import cors from 'cors';
+import express from 'express';
 import * as OpenApiValidator from 'express-openapi-validator';
+import helmet from 'helmet';
 import { createProxyMiddleware, Options } from 'http-proxy-middleware';
+import pino from 'pino-http';
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
+import path from 'path';
 
 import envConfig from '@/config/sanitized-env';
-import logger from '@/utils/helpers/logger';
-import rateLimit from '@/utils/helpers/rate-limit';
 import errorHandler from '@/middlewares/global-error-handler';
 import { ERROR404 } from '@/utils/constants/status-code';
+import logger from '@/utils/helpers/logger';
+import rateLimit from '@/utils/helpers/rate-limit';
 
-const PORT = envConfig.PORT || 5000;
+const PORT = envConfig.PORT ?? 5000;
 const services = [
   // {
   //   route: '/users',

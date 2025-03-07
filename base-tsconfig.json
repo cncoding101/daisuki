@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "jsx": "react-jsx",
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,

@@ -1,7 +1,7 @@
 import pino from 'pino';
-import envConfig from '@/config/sanitized-env';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+import envConfig from '@/config/sanitized-env';
 
 // Ensure that the logs directory exists
 const logDirectory = path.join(__dirname, '../../logs');
@@ -16,7 +16,7 @@ const fileTransport = pino.transport({
 
 const logger = pino(
   {
-    level: envConfig.LOG_LEVEL || 'info',
+    level: envConfig.LOG_LEVEL ?? 'info',
     ...(envConfig.NODE_ENV === 'development'
       ? {
           transport: {

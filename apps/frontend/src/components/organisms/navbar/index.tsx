@@ -1,10 +1,9 @@
+import Button from '@components/atoms/button';
+import Icon from '@components/atoms/icon';
+import Link from '@components/atoms/link';
+import Logo from '@components/atoms/logo';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-
-import Logo from '@components/atoms/logo';
-import Link from '@components/atoms/link';
-import Icon from '@components/atoms/icon';
-import Button from '@components/atoms/button';
 
 interface IProps {
   logo: React.ComponentProps<typeof Logo>;
@@ -43,7 +42,7 @@ const Navbar: React.FC<IProps> = ({ logo, menu = { main: [] }, setOpen }) => {
           <Icon type='fa' icon='user' size={25} />
         </Button>
 
-        {menu.side &&
+        {menu.side != null &&
           menu.side.map((link, index) => (
             <li key={index}>
               <Link

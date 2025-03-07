@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import logger from '@/utils/helpers/logger';
 import { AppError } from '@/utils/helpers/error';
+import logger from '@/utils/helpers/logger';
 
 type ErrorResponse = {
   statusCode: number;

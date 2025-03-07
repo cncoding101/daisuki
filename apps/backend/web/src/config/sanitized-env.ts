@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import 'dotenv/config';
 import Ajv from 'ajv';
 import envSchema from 'env-schema';
-import { LogLevel } from '@/utils/enums/logger';
 import { NodeEnv } from '@/utils/enums/environment';
+import { LogLevel } from '@/utils/enums/logger';
 
 type Env = {
   PORT: number;

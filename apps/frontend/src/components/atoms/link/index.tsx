@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
   to: string;

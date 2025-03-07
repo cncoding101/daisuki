@@ -1,40 +1,5 @@
 const path = require('path');
 
-const noRestrictedGlobalsConfig = [
-  {
-    message: 'Use `ssrGlobal.document` instead',
-    name: 'document',
-  },
-  {
-    message: 'Use `ssrGlobal` instead',
-    name: 'global',
-  },
-  {
-    message: 'Use `ssrGlobal` instead',
-    name: 'globalThis',
-  },
-  {
-    message: 'Use the `storage` interface on top of `localStorage` instead',
-    name: 'localStorage',
-  },
-  {
-    message: 'Use `useLocation` from `react-router-dom` instead',
-    name: 'location',
-  },
-  {
-    message: 'Use `ssrGlobal.navigator` instead',
-    name: 'navigator',
-  },
-  {
-    message: 'Use `setTimeout(fn, 0)` instead',
-    name: 'setImmediate',
-  },
-  {
-    message: 'Use `ssrGlobal.window` instead',
-    name: 'window',
-  },
-];
-
 const noRestrictedImportsConfig = {
   paths: [
     {
@@ -47,19 +12,35 @@ const noRestrictedImportsConfig = {
 
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
     es2020: true,
   },
+  plugins: ['prettier'],
   overrides: [
     {
       files: '**/*.{ts,tsx,js,jsx}',
+      parser: '@typescript-eslint/parser',
       parserOptions: {
+        sourceType: 'module',
         project: path.join(__dirname, './tsconfig.eslint.json'),
       },
       plugins: ['prefer-arrow'],
       rules: {
+        'import/order': [
+          1,
+          {
+            groups: ['external', 'builtin', 'internal', 'sibling', 'parent', 'index'],
+            pathGroups: [
+              { pattern: 'components/**', group: 'internal' },
+              { pattern: 'store/**', group: 'internal' },
+              { pattern: 'services/**', group: 'internal' },
+              { pattern: 'utils/**', group: 'internal', position: 'after' },
+            ],
+            pathGroupsExcludedImportTypes: ['internal'],
+            alphabetize: { order: 'asc', caseInsensitive: true },
+          },
+        ],
         '@typescript-eslint/naming-convention': [
           'error',
           {
@@ -99,7 +80,6 @@ module.exports = {
             allowString: false,
           },
         ],
-        'import/no-default-export': 'error',
         'import/no-unused-modules': [
           'off', // Turn on for cleanup. Make sure to prepend `NODE_OPTIONS=--max-old-space-size=8192 ` to the `lint` script in the root `package.json`.
           {
@@ -116,7 +96,6 @@ module.exports = {
             props: true,
           },
         ],
-        'no-restricted-globals': ['error', ...noRestrictedGlobalsConfig],
         'no-restricted-imports': [
           'error',
           {
@@ -135,6 +114,7 @@ module.exports = {
     },
     {
       files: ['backend/web/**/*.{ts,tsx,js,jsx}'],
+      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
       parserOptions: {
         project: path.join(__dirname, './apps/backend/web/tsconfig.json'),
       },
@@ -149,7 +129,6 @@ module.exports = {
         'airbnb-typescript',
         'plugin:prettier/recommended',
       ],
-      parser: '@typescript-eslint/parser',
       parserOptions: {
         project: path.join(__dirname, './apps/frontend/tsconfig.json'),
       },
@@ -157,7 +136,6 @@ module.exports = {
       rules: {
         'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
         'react/react-in-jsx-scope': 'off',
-        'import/order': 'off',
         'import/prefer-default-export': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/require-default-props': 'off',

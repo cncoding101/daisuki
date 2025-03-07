@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { paths, operations } from '@/api.d.ts';
 import { RequestHandler, Request, Response, NextFunction } from 'express';
+import { paths, operations } from '@/api.d.ts';
 
 type KeysWithUnknownValues<T> = {
   [K in keyof T]: unknown extends T[K] ? K : never;

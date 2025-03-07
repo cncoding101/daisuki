@@ -13,13 +13,15 @@ const request = (options: AxiosRequestConfig) => {
   const onError = (error: AxiosError) => {
     console.error('Request failed:', error.config);
 
-    if (error.response) {
+    if (error.response == null) {
+      console.error('Error message:', error.message);
+    } else {
       console.error('Status:', error.response.status);
       console.error('Data:', error.response.data);
       console.error('Headers:', error.response.headers);
-    } else console.error('Error message:', error.message);
+    }
 
-    return Promise.reject(error.response || error.message);
+    return Promise.reject(error.response ?? error.message);
   };
 
   return client(options).then(onSuccess).catch(onError);

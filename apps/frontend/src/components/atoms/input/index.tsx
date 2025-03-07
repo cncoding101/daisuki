@@ -11,7 +11,7 @@ const Input: React.FC<IProps> = ({ onChange, placeholder, className }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    if (value) {
+    if (value != '') {
       setValue(value);
       onChange?.(e);
     }

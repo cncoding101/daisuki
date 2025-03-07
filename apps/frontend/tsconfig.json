@@ -2,7 +2,7 @@
   "compilerOptions": {
     "types": ["vitest/globals"],
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    
+
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
 
@@ -17,14 +17,9 @@
       "@services/*": ["services/*"],
       "@styles/*": ["styles/*"],
       "@store/*": ["store/*"],
-      "@monorepo/web-api": ["../backend/web/src/index.ts"]
+      "@config/*": ["config/*"]
     }
   },
   "extends": ["../../base-tsconfig.json"],
   "include": ["src/**/*"],
-  "references": [
-    {
-      "path": "../backend/web"
-    }
-  ],
 }

@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import Text from '@components/atoms/text';
+import { render, screen } from '@testing-library/react';
 
 const text = 'hello world!';
 describe('Text', () => {

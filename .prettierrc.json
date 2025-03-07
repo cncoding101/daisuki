@@ -1,19 +1,19 @@
 {
-    "overrides": [
-        {
-            "files": ["*.json"],
-            "options": {
-                "parser": "json"
-            }
-        }
-    ],
-    "arrowParens": "always",
-    "printWidth": 120,
-    "bracketSpacing": true,
-    "singleQuote": true,
-    "jsxSingleQuote": true,
-    "endOfLine": "auto",
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "plugins": ["prettier-plugin-tailwindcss"]
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "options": {
+        "parser": "json"
+      }
+    }
+  ],
+  "arrowParens": "always",
+  "printWidth": 120,
+  "bracketSpacing": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "endOfLine": "auto",
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

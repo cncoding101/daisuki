@@ -1,8 +1,8 @@
+import Navbar from '@components/organisms/navbar';
+import Sidebar from '@components/organisms/sidebar';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Navbar from '@components/organisms/navbar';
-import Sidebar from '@components/organisms/sidebar';
 import '@components/templates/default-layout/style.css';
 
 const defaultLayout: React.FC = () => {
@@ -38,8 +38,6 @@ const defaultLayout: React.FC = () => {
     },
     setOpen: setOpen,
   };
-
-  console.log('what is open', setOpen);
 
   return (
     <div className='flex min-h-screen flex-col'>

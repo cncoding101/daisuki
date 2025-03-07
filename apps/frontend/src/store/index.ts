@@ -1,12 +1,22 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { rootReducer } from './slices';
+import { configureStore, ThunkDispatch } from '@reduxjs/toolkit';
+import { UserProfileAction } from './actions/user-profile';
+import { rootReducer } from './reducers';
+import { UserProfileState } from './reducers/user-profile';
 
-
-export const createReduxStore = () => 
+export const createReduxStore = () =>
   configureStore({
     reducer: rootReducer,
-  })
+  });
 
-export type Store = ReturnType<typeof createReduxStore>
+export type State = {
+  userProfile: UserProfileState;
+};
 
-const b = "    "
+export type Action = UserProfileAction;
+
+export type Store = ReturnType<typeof createReduxStore>;
+export type RootState = ReturnType<typeof rootReducer>;
+export type DispatchType = ThunkDispatch<State, void, Action>;
+export type Selector<Selected> = (state: State) => Selected;
+
+export default createReduxStore();

@@ -4,50 +4,50 @@ class AppError extends Error {
   statusCode: number;
 
   constructor(message?: string, statusCode?: number) {
-    super(message || ERROR500.message);
+    super(message ?? ERROR500.message);
     this.name = this.constructor.name;
-    this.statusCode = statusCode || ERROR500.statusCode;
+    this.statusCode = statusCode ?? ERROR500.statusCode;
   }
 }
 
 class DatabaseError extends AppError {
   constructor(message?: string) {
-    super(message || ERROR422.message, ERROR422.statusCode);
+    super(message ?? ERROR422.message, ERROR422.statusCode);
     this.name = this.constructor.name;
   }
 }
 
 class ValidationError extends AppError {
   constructor(message?: string) {
-    super(message || ERROR400.message, ERROR400.statusCode);
+    super(message ?? ERROR400.message, ERROR400.statusCode);
     this.name = this.constructor.name;
   }
 }
 
 class NotFoundError extends AppError {
   constructor(message?: string) {
-    super(message || ERROR404.message, ERROR404.statusCode);
+    super(message ?? ERROR404.message, ERROR404.statusCode);
     this.name = this.constructor.name;
   }
 }
 
 class NotAuthorizedError extends AppError {
   constructor(message?: string) {
-    super(message || ERROR401.message, ERROR401.statusCode);
+    super(message ?? ERROR401.message, ERROR401.statusCode);
     this.name = this.constructor.name;
   }
 }
 
 class DuplicateFound extends AppError {
   constructor(message?: string) {
-    super(message || ERROR409.message, ERROR409.statusCode);
+    super(message ?? ERROR409.message, ERROR409.statusCode);
     this.name = this.constructor.name;
   }
 }
 
 class NotProcessableContent extends AppError {
   constructor(message?: string) {
-    super(message || ERROR422.message, ERROR422.statusCode);
+    super(message ?? ERROR422.message, ERROR422.statusCode);
     this.name = this.constructor.name;
   }
 }

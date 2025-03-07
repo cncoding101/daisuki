@@ -41,11 +41,6 @@ const Icon: React.FC<IProps> = ({ icon, type, color, size, className }) => {
     console.log(ICON_TYPES.includes(type), type);
     switch (type) {
       case 'md':
-        if (!REACT_ICONS.md[icon as MdVariant]) {
-          console.error(`The icon ${icon} is not under the md library`);
-          return null;
-        }
-
         return lazy(() =>
           import('react-icons/md').then((icons) => ({
             default: icons[REACT_ICONS.md[icon as MdVariant]],
@@ -53,11 +48,6 @@ const Icon: React.FC<IProps> = ({ icon, type, color, size, className }) => {
         );
 
       case 'fa':
-        if (!REACT_ICONS.fa[icon as FaVariant]) {
-          console.error(`The icon ${icon} is not under the fa library`);
-          return null;
-        }
-
         return lazy(() =>
           import('react-icons/fa').then((icons) => ({
             default: icons[REACT_ICONS.fa[icon as FaVariant]],
@@ -65,11 +55,6 @@ const Icon: React.FC<IProps> = ({ icon, type, color, size, className }) => {
         );
 
       case 'fi':
-        if (!REACT_ICONS.fi[icon as FiVariant]) {
-          console.error(`The icon ${icon} is not under the fi library`);
-          return null;
-        }
-
         return lazy(() =>
           import('react-icons/fi').then((icons) => ({
             default: icons[REACT_ICONS.fi[icon as FiVariant]],
@@ -77,11 +62,6 @@ const Icon: React.FC<IProps> = ({ icon, type, color, size, className }) => {
         );
 
       case 'io':
-        if (!REACT_ICONS.io[icon as IoVariant]) {
-          console.error(`The icon ${icon} is not under the io library`);
-          return null;
-        }
-
         return lazy(() =>
           import('react-icons/io').then((icons) => ({
             default: icons[REACT_ICONS.io[icon as IoVariant]],
@@ -93,7 +73,7 @@ const Icon: React.FC<IProps> = ({ icon, type, color, size, className }) => {
     }
   }, [icon, type]);
 
-  if (!IconComponent) return null;
+  if (IconComponent == null) return null;
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

@@ -1,6 +1,6 @@
 import { ControllerByOperationId } from 'src/controller';
-import { STANDARD } from '@/utils/constants/status-code';
 import { auth } from '@/business';
+import { STANDARD } from '@/utils/constants/status-code';
 
 const register: ControllerByOperationId<'register'> = async (req, res, next) => {
   try {

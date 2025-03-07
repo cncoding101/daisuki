@@ -23,16 +23,16 @@ export default async ({
   message: string;
 }> => {
   // check if user exist
-  const exists = users.find((user) => (user.email = email));
-  if (exists) throw new NotFoundError();
+  const exists = users.find((user) => user.email == email);
+  if (exists == null) throw new NotFoundError();
 
   // return { message: `A email by ${email} already exists!`, code: 400 };
   // create new hash using crypt
   const salt = await bcrypt.genSalt(10);
-  if (!salt) throw new AppError();
+  if (salt != '') throw new AppError();
 
   const hashedPassword = await bcrypt.hash(password, salt);
-  if (!hashedPassword) throw new AppError();
+  if (hashedPassword != '') throw new AppError();
 
   users.push({ email, password: hashedPassword, firstname, lastname, address });
 

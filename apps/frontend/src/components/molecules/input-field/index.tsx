@@ -1,5 +1,5 @@
-import Text from '@components/atoms/text';
 import Input from '@components/atoms/input';
+import Text from '@components/atoms/text';
 
 interface IProps {
   label: string;

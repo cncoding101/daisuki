@@ -13,7 +13,7 @@ export default async ({
 }> => {
   // find user
   const exists = users.find((user) => user.email === email);
-  if (!exists) throw new ValidationError(`A email by ${email} is not registered!`);
+  if (exists == null) throw new ValidationError(`A email by ${email} is not registered!`);
   // validate
   const isPasswordValid = await bcrypt.compare(password, exists.password);
   if (!isPasswordValid) throw new ValidationError('Incorrect password');

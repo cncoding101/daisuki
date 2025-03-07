@@ -19,7 +19,7 @@ const SideBar: React.FC<IProps> = ({ open, setOpen }) => {
 
   useEffect(() => {
     const handleClick = (e: Event) => {
-      if (open && ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (open && ref.current != null && !ref.current.contains(e.target as Node)) setOpen(false);
     };
 
     document.addEventListener('mousedown', handleClick);

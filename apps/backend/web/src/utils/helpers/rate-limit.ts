@@ -14,7 +14,7 @@ setInterval(() => {
 const rateLimitAndTimeout = (req: Request, res: Response, next: NextFunction) => {
   const ip = req.ip!;
 
-  requestCounts[ip] = (requestCounts[ip] || 0) + 1;
+  requestCounts[ip] = (requestCounts[ip] ?? 0) + 1;
 
   if (requestCounts[ip] > RATE_LIMIT)
     return res.status(429).json({
