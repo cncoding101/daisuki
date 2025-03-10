@@ -13,10 +13,8 @@
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.0.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^10.0.2",
-    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^5.2.3",
@@ -52,6 +50,8 @@
     "prepare": "husky",
     "start:frontend": "yarn workspace @monorepo/client dev"
   },
-  "workspaces": ["apps/**/*"],
+  "workspaces": [
+    "apps/**/*"
+  ],
   "name": "monorepo"
 }

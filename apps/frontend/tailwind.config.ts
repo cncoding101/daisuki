@@ -14,6 +14,9 @@ export default {
         highlight: '#e3a448',
         contrast: '#fefdf5',
       },
+      animation: {
+        'bounce-pulse': 'bounce 1s ease-in-out infinite, pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
     },
   },
   plugins: [],

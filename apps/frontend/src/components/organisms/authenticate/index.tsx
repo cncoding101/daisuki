@@ -9,7 +9,7 @@ type IProps = {
   children: ReactNode;
 };
 
-export const Authenticate: React.FC<IProps> = ({ children }) => {
+const Authenticate: React.FC<IProps> = ({ children }) => {
   const dispatch = useDispatch();
   const user = useSelector(getUserProfileSelector);
 
@@ -29,7 +29,7 @@ export const Authenticate: React.FC<IProps> = ({ children }) => {
     }
   }, [user]);
 
-  console.log('what is user status', userStatus);
-
   if (userStatus != null) return children;
 };
+
+export default Authenticate;

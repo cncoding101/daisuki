@@ -29,8 +29,10 @@ const defaultLayout: React.FC = () => {
         {
           to: '',
           icon: {
-            type: 'fi',
-            icon: 'cart',
+            variant: {
+              type: 'fi',
+              icon: 'cart',
+            },
             size: 25,
           },
         },
@@ -48,13 +50,13 @@ const defaultLayout: React.FC = () => {
 
       <Sidebar open={open} setOpen={setOpen} />
 
-      <main className='flex-1 overflow-auto'>
-        <section className='container'>
+      <main className='flex flex-grow overflow-auto'>
+        <section className='container flex-grow'>
           <Outlet />
         </section>
       </main>
 
-      <footer className='flex justify-center'>© 2024 Daisuki. All Rights Reserved.</footer>
+      <footer className='flex flex-shrink-0 justify-center'>© 2024 Daisuki. All Rights Reserved.</footer>
     </div>
   );
 };

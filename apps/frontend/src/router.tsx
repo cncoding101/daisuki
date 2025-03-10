@@ -1,9 +1,8 @@
-import { Authenticate } from '@components/organisms/authenticate';
+import Authenticate from '@components/organisms/authenticate';
 import DefaultLayout from '@components/templates/default-layout';
-import Home from '@pages/home';
+import { LazyHome } from '@pages/home/lazy-home';
 
-import { createBrowserRouter, createRoutesFromElements, Navigate, Outlet, Route, useParams } from 'react-router-dom';
-
+import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
 const routes = createRoutesFromElements(
   <Route
@@ -14,7 +13,7 @@ const routes = createRoutesFromElements(
     }
     path='/*'
   >
-    <Route element={<Home />} path='home'></Route>
+    <Route element={<LazyHome />} path='home'></Route>
   </Route>,
 );
 

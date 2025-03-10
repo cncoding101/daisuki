@@ -31,7 +31,7 @@ const SideBar: React.FC<IProps> = ({ open, setOpen }) => {
   return (
     <div ref={ref} className={`sidebar ${open ? 'open' : ''}`}>
       <Button className='close' onClick={handleToggle}>
-        <Icon type='io' icon='close' />
+        <Icon variant={{ type: 'io', icon: 'close' }} />
       </Button>
 
       <section className='container my-6'>

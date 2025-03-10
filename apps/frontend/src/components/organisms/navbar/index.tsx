@@ -39,7 +39,7 @@ const Navbar: React.FC<IProps> = ({ logo, menu = { main: [] }, setOpen }) => {
 
       <ul className='absolute right-5 top-1/2 flex -translate-y-1/2 transform items-center space-x-6'>
         <Button onClick={() => setOpen(true)}>
-          <Icon type='fa' icon='user' size={25} />
+          <Icon variant={{ type: 'fa', icon: 'user' }} size={25} />
         </Button>
 
         {menu.side != null &&

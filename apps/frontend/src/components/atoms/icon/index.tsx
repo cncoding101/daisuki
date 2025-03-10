@@ -1,15 +1,36 @@
+import { unreachableWithReturn } from '@utils/types/unreachable';
 import React, { useMemo, lazy, Suspense } from 'react';
 
 type Type = keyof typeof REACT_ICONS;
-type Variant = MdVariant | FaVariant | FiVariant | IoVariant;
+type Variant =
+  | {
+      type: 'md';
+      icon: MdVariant;
+    }
+  | {
+      type: 'fa';
+      icon: FaVariant;
+    }
+  | {
+      type: 'fi';
+      icon: FiVariant;
+    }
+  | {
+      type: 'io';
+      icon: IoVariant;
+    }
+  | {
+      type: 'gi';
+      icon: GiVariant;
+    };
 type MdVariant = keyof typeof REACT_ICONS.md;
 type FaVariant = keyof typeof REACT_ICONS.fa;
 type FiVariant = keyof typeof REACT_ICONS.fi;
 type IoVariant = keyof typeof REACT_ICONS.io;
+type GiVariant = keyof typeof REACT_ICONS.gi;
 
 interface IProps {
-  type: Type;
-  icon: Variant;
+  variant: Variant;
   size?: number;
   color?: string;
   className?: string;
@@ -29,16 +50,21 @@ const REACT_ICONS = {
   io: {
     close: 'IoMdClose',
   },
+  gi: {
+    spacesuit: 'GiSpaceSuit',
+  },
 } as const;
 
 const ICON_TYPES = Object.keys(REACT_ICONS) as Type[];
 
-const Icon: React.FC<IProps> = ({ icon, type, color, size, className }) => {
+const Icon: React.FC<IProps> = ({ variant, color, size, className }) => {
   // Memoize the dynamic import to prevent re-imports on every render
   const IconComponent = useMemo(() => {
+    if (!variant) return null;
+
+    const { icon, type } = variant;
     if (!ICON_TYPES.includes(type)) return null;
 
-    console.log(ICON_TYPES.includes(type), type);
     switch (type) {
       case 'md':
         return lazy(() =>
@@ -68,10 +94,17 @@ const Icon: React.FC<IProps> = ({ icon, type, color, size, className }) => {
           })),
         );
 
+      case 'gi':
+        return lazy(() =>
+          import('react-icons/gi').then((icons) => ({
+            default: icons[REACT_ICONS.gi[icon as GiVariant]],
+          })),
+        );
+
       default:
-        return null;
+        return unreachableWithReturn(type, null);
     }
-  }, [icon, type]);
+  }, [variant]);
 
   if (IconComponent == null) return null;
 

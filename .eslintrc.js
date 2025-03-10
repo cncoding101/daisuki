@@ -28,7 +28,7 @@ module.exports = {
       plugins: ['prefer-arrow'],
       rules: {
         'import/order': [
-          1,
+          'warning',
           {
             groups: ['external', 'builtin', 'internal', 'sibling', 'parent', 'index'],
             pathGroups: [
@@ -96,6 +96,7 @@ module.exports = {
             props: true,
           },
         ],
+        'no-console': 'error',
         'no-restricted-imports': [
           'error',
           {
@@ -113,20 +114,18 @@ module.exports = {
       },
     },
     {
-      files: ['backend/web/**/*.{ts,tsx,js,jsx}'],
+      files: ['apps/backend/web/**/*.{ts,tsx,js,jsx}'],
       extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
       parserOptions: {
         project: path.join(__dirname, './apps/backend/web/tsconfig.json'),
       },
     },
     {
-      files: ['frontend/**/*.{ts,tsx,js,jsx}'],
+      files: ['apps/frontend/**/*.{ts,tsx,js,jsx}'],
       extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react-hooks/recommended',
-        'airbnb',
-        'airbnb-typescript',
         'plugin:prettier/recommended',
       ],
       parserOptions: {
@@ -136,16 +135,9 @@ module.exports = {
       rules: {
         'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
         'react/react-in-jsx-scope': 'off',
-        'import/prefer-default-export': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/require-default-props': 'off',
         'react/button-has-type': 'off',
-        'import/no-unresolved': [
-          'error',
-          {
-            ignore: ['.svg'],
-          },
-        ],
         'no-restricted-imports': [
           'error',
           {
