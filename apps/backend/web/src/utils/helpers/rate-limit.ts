@@ -16,10 +16,12 @@ const rateLimitAndTimeout = (req: Request, res: Response, next: NextFunction) =>
 
   requestCounts[ip] = (requestCounts[ip] ?? 0) + 1;
 
-  if (requestCounts[ip] > RATE_LIMIT)
-    return res.status(429).json({
+  if (requestCounts[ip] > RATE_LIMIT) {
+    res.status(429).json({
       message: 'Rate limit exceeded.',
     });
+    return;
+  }
 
   next();
 };

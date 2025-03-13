@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run generate:types && nodemon src/server.ts",
+    "dev": "nodemon src/index.ts",
     "copy-swagger": "copyfiles -u 1 src/swagger/**/* build/src",
-    "start": "npm run build && node -r ./load-env.js build/src/server.js",
-    "build": "npm run clean && tsc && tsc-alias && npm run copy-swagger",
+    "start": "yarn run build && node -r ./load-env.js build/src/index.js",
+    "build": "yarn run clean && tsc && tsc-alias && yarn run copy-swagger",
     "clean": "rimraf build",
     "test": "jest",
-    "generate:types": "openapi-typescript src/swagger/api.yaml --output src/api.d.ts"
+    "generate:openapi": "ts-node -r tsconfig-paths/register src/generate-openapi.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,12 +20,12 @@
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.21",
+    "@types/express": "^5.0.0",
     "@types/jest": "^29.5.13",
-    "@types/jsonwebtoken": "^9.0.6",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/morgan": "^1.9.9",
     "@types/supertest": "^6.0.2",
-    "@types/swagger-ui-express": "^4.1.6",
+    "@types/swagger-ui-express": "^4.1.8",
     "@types/yamljs": "^0.2.34",
     "ajv": "^8.13.0",
     "copyfiles": "^2.4.1",
@@ -37,11 +37,12 @@
     "rimraf": "^5.0.7",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
-    "ts-node": "^10.9.2",
+    "ts-node": "11.0.0-beta.1",
     "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0"
   },
   "dependencies": {
+    "@trpc/server": "^10.45.2",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -54,6 +55,8 @@
     "pino": "^9.3.2",
     "pino-http": "^10.2.0",
     "swagger-ui-express": "^5.0.1",
-    "yamljs": "^0.3.0"
+    "trpc-openapi": "^1.2.0",
+    "yamljs": "^0.3.0",
+    "zod": "^3.24.2"
   }
 }

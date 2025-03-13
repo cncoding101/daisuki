@@ -1,24 +1,31 @@
-import { ControllerByOperationId } from 'src/controller';
 import { auth } from '@/business';
-import { STANDARD } from '@/utils/constants/status-code';
+import { LoginInput, RegisterInput } from '@/routers/schemas/auth';
+import { AppError } from '@/utils/helpers/error';
+import { TRPCError } from '@trpc/server';
 
-const register: ControllerByOperationId<'register'> = async (req, res, next) => {
+const register = async ({ input }: RegisterInput) => {
   try {
-    const { message } = await auth.register(req.body);
+    const { message } = await auth.register(input);
 
-    return res.status(STANDARD.SUCCESS).json({ message });
+    return { message };
   } catch (error) {
-    next(error);
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: error instanceof AppError ? error.message : 'Registration failed',
+    });
   }
 };
 
-const login: ControllerByOperationId<'login'> = async (req, res, next) => {
+const login = async ({ input }: LoginInput) => {
   try {
-    const { message, data } = await auth.login(req.body);
+    const { message, data } = await auth.login(input);
 
-    return res.status(STANDARD.SUCCESS).json({ message, token: data });
+    return { message, token: data };
   } catch (error) {
-    next(error);
+    throw new TRPCError({
+      code: 'UNAUTHORIZED',
+      message: error instanceof AppError ? error.message : 'Login failed',
+    });
   }
 };
 

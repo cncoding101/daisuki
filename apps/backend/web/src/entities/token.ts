@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 
 interface Sign {
   email: string;
@@ -7,7 +7,9 @@ interface Sign {
 }
 
 export default ({ email, secret, expiresIn = '15m' }: Sign) => {
-  const token = jwt.sign({ email }, secret, { expiresIn });
+  // NOTE wierd type issues from expiresIn
+  const options: SignOptions = { expiresIn: expiresIn as SignOptions['expiresIn'] };
+  const token = jwt.sign({ email }, secret, options);
 
   return Object.freeze(token);
 };

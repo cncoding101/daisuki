@@ -2,5 +2,5 @@
   "watch": ["src"],
   "ignore": ["src/api.d.ts"],
   "ext": "ts, yaml",
-  "exec": "npm run generate:types && ts-node -r tsconfig-paths/register -r ./load-env.js"
+  "exec": "ts-node -r tsconfig-paths/register -r ./load-env.js"
 }

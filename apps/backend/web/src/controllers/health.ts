@@ -1,21 +1,21 @@
-import { ControllerByOperationId } from 'src/controller';
+import { TRPCError } from '@trpc/server';
 
-const live: ControllerByOperationId<'live'> = (req, res) => {
-  return res.status(200).json({ message: 'Server is live' });
+const live = () => {
+  return { message: 'Server is live' };
 };
 
-const ready: ControllerByOperationId<'ready'> = (req, res) => {
+const ready = () => {
   const isReady = false;
 
   // anything you need to verify before confirming your application is ready
   // to start handling incoming requests.
 
   if (isReady) {
-    return res.status(200).json({ message: 'Server is ready' });
+    return { message: 'Server is ready' };
   }
 
-  return res.status(503).json({
-    code: 503,
+  throw new TRPCError({
+    code: 'INTERNAL_SERVER_ERROR', // TODO: change this into SERVICE_UNAVAILABLE when v11 of trpc is released
     message: 'Server is not ready yet',
   });
 };

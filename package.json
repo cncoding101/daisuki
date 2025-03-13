@@ -48,10 +48,9 @@
     "type-check:ci": "NODE_OPTIONS=--max-old-space-size=5120 yarn type-check",
     "optimise:svg": "yarn svgo --folder apps --exclude \"[a-z0-9]{20}\" \"arrow-graph.svg\" --recursive",
     "prepare": "husky",
-    "start:frontend": "yarn workspace @monorepo/client dev"
+    "start:frontend": "yarn workspace @monorepo/client dev",
+    "start:backend": "yarn workspace @monorepo/web-api dev"
   },
-  "workspaces": [
-    "apps/**/*"
-  ],
+  "workspaces": ["apps/**/*"],
   "name": "monorepo"
 }

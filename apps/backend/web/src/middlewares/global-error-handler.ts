@@ -22,5 +22,6 @@ export default (error: Error, req: Request, res: Response) => {
   };
 
   if (error instanceof AppError) errorResponse.statusCode = error.statusCode;
-  return res.status(errorResponse.statusCode).json(errorResponse);
+  res.status(errorResponse.statusCode).json(errorResponse);
+  return;
 };
