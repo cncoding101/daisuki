@@ -1,4 +1,3 @@
-
 import { config } from '@config/environment';
 import { HOME_PAGE, stripTrailingSlash } from '@utils/helpers/paths';
 import { function as func } from 'fp-ts';

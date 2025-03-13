@@ -25,10 +25,10 @@ module.exports = {
         sourceType: 'module',
         project: path.join(__dirname, './tsconfig.eslint.json'),
       },
-      plugins: ['prefer-arrow'],
+      plugins: ['import', 'prefer-arrow'],
       rules: {
         'import/order': [
-          'warning',
+          1,
           {
             groups: ['external', 'builtin', 'internal', 'sibling', 'parent', 'index'],
             pathGroups: [

@@ -1,6 +1,6 @@
-import { procedure, router } from '@/trpc';
-import { live, ready } from '@/controllers/health';
 import { basicOutputSchema, emptyInputSchema } from './schemas';
+import { live, ready } from '@/controllers/health';
+import { procedure, router } from '@/trpc';
 
 const prefix = '/health';
 const healthRouter = router({

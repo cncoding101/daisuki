@@ -1,5 +1,5 @@
-import healthRouter from './health';
 import authRouter from './auth';
+import healthRouter from './health';
 import { router } from '@/trpc';
 
 const appRouter = router({

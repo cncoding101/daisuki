@@ -1,7 +1,7 @@
+import { basicOutputSchema } from './schemas';
+import { loginInputSchema, registerInputSchema } from './schemas/auth';
 import { login, register } from '@/controllers/auth';
 import { procedure, router } from '@/trpc';
-import { loginInputSchema, registerInputSchema } from './schemas/auth';
-import { basicOutputSchema } from './schemas';
 
 const authRouter = router({
   register: procedure

@@ -1,6 +1,6 @@
+import Loading from '@components/organisms/loading';
 import { Suspense } from 'react';
 import lazyWithPreload from 'react-lazy-with-preload';
-import Loading from '@components/organisms/loading';
 
 const simulateHomeLoad = new Promise<{ default: React.ComponentType<any> }>((resolve) => {
   setTimeout(() => resolve(import('./index')), 10000); // Simulating a 3 seconds delay

@@ -6,11 +6,7 @@ import {
   /* eslint-enable no-restricted-imports */
 } from 'react-redux';
 
-import type {
-  DispatchType,
-  Selector,
-  Store
-} from '.';
+import type { DispatchType, Selector, Store } from '.';
 
 export const useStore: () => Store = originalUseStore;
 export const useDispatch: () => DispatchType = originalUseDispatch;

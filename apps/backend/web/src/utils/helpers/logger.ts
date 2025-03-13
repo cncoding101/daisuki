@@ -16,7 +16,7 @@ const fileTransport = pino.transport({
 
 const logger = pino(
   {
-    level: envConfig.LOG_LEVEL ?? 'info',
+    level: envConfig.LOG_LEVEL,
     ...(envConfig.NODE_ENV === 'development'
       ? {
           transport: {

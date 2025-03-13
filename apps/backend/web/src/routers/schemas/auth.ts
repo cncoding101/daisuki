@@ -1,5 +1,5 @@
-import { InputWrapper } from '@/utils/types/generic';
 import { z } from 'zod';
+import { InputWrapper } from '@/utils/types/generic';
 
 const addressInputSchema = z.object({
   street: z.string(),

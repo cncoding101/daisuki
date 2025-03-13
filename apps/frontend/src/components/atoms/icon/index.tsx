@@ -1,5 +1,5 @@
 import { unreachableWithReturn } from '@utils/types/unreachable';
-import React, { useMemo, lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useMemo } from 'react';
 
 type Type = keyof typeof REACT_ICONS;
 type Variant =
@@ -60,8 +60,6 @@ const ICON_TYPES = Object.keys(REACT_ICONS) as Type[];
 const Icon: React.FC<IProps> = ({ variant, color, size, className }) => {
   // Memoize the dynamic import to prevent re-imports on every render
   const IconComponent = useMemo(() => {
-    if (!variant) return null;
-
     const { icon, type } = variant;
     if (!ICON_TYPES.includes(type)) return null;
 

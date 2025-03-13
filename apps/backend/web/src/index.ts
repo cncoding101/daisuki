@@ -1,26 +1,24 @@
+import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
-import * as OpenApiValidator from 'express-openapi-validator';
 import helmet from 'helmet';
 import { createProxyMiddleware, Options } from 'http-proxy-middleware';
 import pino from 'pino-http';
 import swaggerUi from 'swagger-ui-express';
-import YAML from 'yamljs';
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
 
+import createContext from './context';
+import appRouter from './routers';
 import envConfig from '@/config/sanitized-env';
 import errorHandler from '@/middlewares/global-error-handler';
 import { ERROR404 } from '@/utils/constants/status-code';
 import logger from '@/utils/helpers/logger';
 import rateLimit from '@/utils/helpers/rate-limit';
-import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import appRouter from './routers';
-import createContext from './context';
 
-const PORT = envConfig.PORT ?? 5000;
+const PORT = envConfig.PORT;
 const services = [
   // {
   //   route: '/users',
@@ -60,14 +58,6 @@ const buildServer = () => {
   app.use(rateLimit);
 
   app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-  // setup open api validation
-  // app.use(
-  //   OpenApiValidator.middleware({
-  //     apiSpec: path.join(__dirname, 'swagger', 'api.yaml'),
-  //     operationHandlers: path.join(__dirname, 'controllers'),
-  //   }),
-  // );
 
   app.use(
     createExpressMiddleware({

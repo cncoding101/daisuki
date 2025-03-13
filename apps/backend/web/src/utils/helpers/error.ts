@@ -1,4 +1,4 @@
-import { ERROR400, ERROR401, ERROR403, ERROR404, ERROR409, ERROR422, ERROR500 } from '@/utils/constants/status-code';
+import { ERROR400, ERROR401, ERROR404, ERROR409, ERROR422, ERROR500 } from '@/utils/constants/status-code';
 
 class AppError extends Error {
   statusCode: number;

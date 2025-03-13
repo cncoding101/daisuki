@@ -1,5 +1,5 @@
-import openApiDoc from './openapi';
 import * as fs from 'fs';
+import openApiDoc from './openapi';
 
 fs.writeFileSync('openapi.json', JSON.stringify(openApiDoc, null, 2), 'utf8');
 

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 import '@components/templates/default-layout/style.css';
 
-const defaultLayout: React.FC = () => {
+const DefaultLayout: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   const navbar: React.ComponentProps<typeof Navbar> = {
@@ -61,4 +61,4 @@ const defaultLayout: React.FC = () => {
   );
 };
 
-export default defaultLayout;
+export default DefaultLayout;

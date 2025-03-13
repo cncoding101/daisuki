@@ -20,7 +20,7 @@ export const loggedOutUser = (): LoggedOutUserAction => ({
   type: LOGGED_OUT_USER,
 });
 
-const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
+export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 type AuthenticateUserAction = {
   type: typeof AUTHENTICATE_USER;
 };

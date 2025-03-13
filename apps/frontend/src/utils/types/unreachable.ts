@@ -1,8 +1,8 @@
-export const unreachable = (_: never): never => {
+export const unreachable = (): never => {
   throw new Error('unreachable');
 };
 
-export const unreachableButIgnore = (_: never): void => {
+export const unreachableButIgnore = (): void => {
   /* ignore */
 };
 

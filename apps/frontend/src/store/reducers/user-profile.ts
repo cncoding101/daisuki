@@ -1,9 +1,9 @@
-import { UserProfileAction } from "@store/actions/user-profile";
+import { UserProfileAction } from '@store/actions/user-profile';
 
 export type Profile = {
-    id: number;
-    username: string;
-  };
+  id: number;
+  username: string;
+};
 
 export type UserProfileState =
   | {
@@ -19,8 +19,8 @@ export const USER_STATES = {
 } as const;
 
 const initialState: UserProfileState = {
-    status: 'UNINITIALIZED',
-  };
+  status: 'UNINITIALIZED',
+};
 
 export const userProfileReducer = (
   state: UserProfileState = initialState,

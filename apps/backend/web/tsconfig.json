@@ -9,6 +9,6 @@
     "outDir": "./build"
   },
   "extends": ["../../../base-tsconfig.json"],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "./jest.config.ts", "./load-env.js"],
   "exclude": ["node_modules", "build"]
 }
