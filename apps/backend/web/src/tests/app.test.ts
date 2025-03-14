@@ -1,6 +1,6 @@
 import { Express } from 'express';
 import request from 'supertest';
-import buildServer from '@/server';
+import buildServer from '@/index';
 
 describe('App routes', () => {
   let app: Express;

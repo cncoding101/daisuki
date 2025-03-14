@@ -115,6 +115,7 @@ module.exports = {
     },
     {
       files: ['apps/backend/web/**/*.{ts,tsx,js,jsx}'],
+      excludedFiles: ["apps/backend/web/load-env.js", "**/*.d.ts"],
       extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
       parserOptions: {
         project: path.join(__dirname, './apps/backend/web/tsconfig.json'),

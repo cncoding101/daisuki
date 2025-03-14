@@ -12,7 +12,7 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[json]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -33,7 +33,6 @@
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
     "source.fixAll.eslint": "explicit"
   }
 }

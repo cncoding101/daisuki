@@ -7,16 +7,19 @@ import helmet from 'helmet';
 import { createProxyMiddleware, Options } from 'http-proxy-middleware';
 import pino from 'pino-http';
 import swaggerUi from 'swagger-ui-express';
+import { createOpenApiExpressMiddleware } from 'trpc-openapi';
 import fs from 'fs';
 import path from 'path';
 
 import createContext from './context';
-import appRouter from './routers';
 import envConfig from '@/config/sanitized-env';
 import errorHandler from '@/middlewares/global-error-handler';
+import appRouter from '@/routers';
 import { ERROR404 } from '@/utils/constants/status-code';
 import logger from '@/utils/helpers/logger';
 import rateLimit from '@/utils/helpers/rate-limit';
+
+export * from '@/routers';
 
 const PORT = envConfig.PORT;
 const services = [
@@ -60,11 +63,13 @@ const buildServer = () => {
   app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   app.use(
+    '/api/trpc',
     createExpressMiddleware({
       router: appRouter,
       createContext,
     }),
   );
+  app.use('/api', createOpenApiExpressMiddleware({ router: appRouter, createContext }));
 
   // setup proxy to microservices
   services.forEach(({ route, target }) => {

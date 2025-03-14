@@ -7,10 +7,49 @@
   },
   "servers": [
     {
-      "url": "http://localhost:5173/v1"
+      "url": "http://localhost:5000/api"
     }
   ],
   "paths": {
+    "/say-hello": {
+      "get": {
+        "operationId": "sayHello",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "greeting": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "greeting"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/health/live": {
       "get": {
         "operationId": "health-live",

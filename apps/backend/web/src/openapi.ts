@@ -1,9 +1,10 @@
 import { generateOpenApiDocument } from 'trpc-openapi';
-import appRouter from './routers';
+import config from '@/config/sanitized-env';
+import appRouter from '@/routers';
 
 export default generateOpenApiDocument(appRouter, {
   title: 'Daisuki OpenApi',
   version: '1.0.0',
-  baseUrl: 'http://localhost:5173/v1',
+  baseUrl: `http://localhost:${config.PORT}/api`,
   description: 'A official Daisuki REST API',
 });

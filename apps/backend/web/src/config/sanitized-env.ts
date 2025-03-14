@@ -1,9 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import 'dotenv/config';
 import Ajv from 'ajv';
+import dotenv from 'dotenv';
 import envSchema from 'env-schema';
 import { NodeEnv } from '@/utils/enums/environment';
 import { LogLevel } from '@/utils/enums/logger';
+
+const getEnvFilePath = () => {
+  switch (process.env.NODE_ENV) {
+    case 'production':
+      return '.env';
+
+    default:
+      return '.env.local';
+  }
+};
+
+dotenv.config({ path: getEnvFilePath() });
 
 type Env = {
   PORT: number;

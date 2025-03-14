@@ -2,13 +2,15 @@
   "name": "@monorepo/web-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "dev": "nodemon src/index.ts",
     "copy-swagger": "copyfiles -u 1 src/swagger/**/* build/src",
     "start": "yarn run build && node -r ./load-env.js build/src/index.js",
     "build": "yarn run clean && tsc && tsc-alias && yarn run copy-swagger",
     "clean": "rimraf build",
+    "build:types": "tsc -b .",
     "test": "jest",
     "generate:openapi": "ts-node -r tsconfig-paths/register src/generate-openapi.ts"
   },

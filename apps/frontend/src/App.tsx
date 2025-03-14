@@ -1,4 +1,5 @@
 import { config } from '@config/environment';
+import TRPCProvider from '@providers/trpc';
 import '@styles/global.css';
 import { getHeadInfoForPath } from '@utils/helpers/header-info';
 import { NoProps } from '@utils/types';
@@ -21,9 +22,11 @@ const App: React.FC<NoProps> = () => {
           <link href='logo_head.jpg' rel='icon' />
         </Helmet>
 
-        <Provider store={store}>
-          <RouterProvider router={router} />
-        </Provider>
+        <TRPCProvider>
+          <Provider store={store}>
+            <RouterProvider router={router} />
+          </Provider>
+        </TRPCProvider>
       </HelmetProvider>
     </StrictMode>
   );

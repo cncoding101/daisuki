@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
     "types": ["vitest/globals"],
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
 
@@ -15,6 +16,7 @@
       "@utils/*": ["utils/*"],
       "@hooks/*": ["hooks/*"],
       "@services/*": ["services/*"],
+      "@providers/*": ["providers/*"],
       "@styles/*": ["styles/*"],
       "@store/*": ["store/*"],
       "@config/*": ["config/*"]
@@ -28,5 +30,11 @@
     "./vite.config.ts",
     "./vitest-setup.ts",
     "./vitest.config.ts"
+  ],
+  "exclude": ["node_modules", "dist"],
+  "references": [
+    {
+      "path": "../backend/web"
+    }
   ]
 }
