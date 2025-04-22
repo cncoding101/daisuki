@@ -21,7 +21,6 @@
     "@trpc/client": "^10.45.2",
     "@trpc/react-query": "^10.45.2",
     "@trpc/server": "^10.45.2",
-    "add": "^2.0.6",
     "axios": "^1.7.2",
     "fp-ts": "^2.16.9",
     "react": "^18.2.0",

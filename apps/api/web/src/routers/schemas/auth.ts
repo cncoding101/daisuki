@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { basicOutputSchema } from '.';
 import { InputWrapper } from '@/utils/types/generic';
 
 const addressInputSchema = z.object({
@@ -21,8 +22,13 @@ const registerInputSchema = z.object({
   address: addressInputSchema.optional(),
 });
 
+const loginOutputSchema = basicOutputSchema.extend({
+  token: z.string(),
+});
+
+type LoginOutput = z.infer<typeof loginOutputSchema>;
 type RegisterInput = InputWrapper<z.infer<typeof registerInputSchema>>;
 type LoginInput = InputWrapper<z.infer<typeof loginInputSchema>>;
 
-export type { RegisterInput, LoginInput };
-export { loginInputSchema, registerInputSchema };
+export type { RegisterInput, LoginInput, LoginOutput };
+export { loginInputSchema, registerInputSchema, loginOutputSchema };

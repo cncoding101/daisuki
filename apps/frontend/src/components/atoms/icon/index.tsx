@@ -1,4 +1,4 @@
-import { unreachableWithReturn } from '@utils/types/unreachable';
+import { unreachableWithReturn } from '@utils/helpers/unreachable';
 import React, { lazy, Suspense, useMemo } from 'react';
 
 type Type = keyof typeof REACT_ICONS;

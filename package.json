@@ -13,7 +13,7 @@
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.0.0",
-    "eslint-config-prettier": "^10.0.2",
+    "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
@@ -32,6 +32,7 @@
     "prettier-plugin-tailwindcss": "^0.5.12",
     "svgo": "^2.8.0",
     "ts-jest": "^28.0.0",
+    "ts-proto": "^2.7.0",
     "typescript": "^5.7.3",
     "vitest": "^3.0.5"
   },
@@ -43,15 +44,18 @@
     "lint:ci": "cross-env NODE_OPTIONS=--max-old-space-size=4096 yarn lint",
     "lint:files": "jest -c jest-prettier.config.js",
     "lint:files:fix": "prettier --write .",
-    "clean": "yarn foreach --jobs 4 run clean",
+    "clean:modules": "find . -name 'node_modules' -type d -exec rm -rf '{}' + && yarn",
     "type-check": "tsc -b tsconfig.solution.json",
     "type-check:ci": "NODE_OPTIONS=--max-old-space-size=5120 yarn type-check",
     "optimise:svg": "yarn svgo --folder apps --exclude \"[a-z0-9]{20}\" \"arrow-graph.svg\" --recursive",
     "prepare": "husky",
+    "ts-proto": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto.cmd --ts_proto_out=./libs/common/src/types --ts_proto_opt=nestJs=true",
     "start:frontend:dev": "yarn workspace @monorepo/client dev",
-    "start:backend:dev": "yarn workspace @monorepo/web-api dev",
-    "start:dev": "concurrently \"yarn run start:frontend:dev\" \"yarn run start:backend:dev\""
+    "start:api:web:dev": "yarn workspace @monorepo/web-api dev",
+    "start:services:dev": "concurrently \"nest start user --watch\"",
+    "start:dev": "concurrently \"yarn run start:frontend:dev\" \"yarn run start:backend:dev\" \"yarn run start:service:dev\""
   },
-  "workspaces": ["apps/**/*"],
+  "workspaces": ["apps/**/*", "libs/*"],
+  "packageManager": "yarn@4.7.0",
   "name": "monorepo"
 }

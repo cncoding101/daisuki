@@ -1,7 +1,7 @@
 import { authenticateUser } from '@store/actions/user-profile';
 import { useDispatch } from '@store/redux-hooks';
 import { getUserProfileSelector } from '@store/selectors/user-profile';
-import { unreachableWithReturn } from '@utils/types/unreachable';
+import { unreachableWithReturn } from '@utils/helpers/unreachable';
 import { ReactNode, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 

@@ -16,7 +16,7 @@ module.exports = {
     browser: true,
     es2020: true,
   },
-  plugins: ['prettier'],
+  extends: ['plugin:prettier/recommended'],
   overrides: [
     {
       files: '**/*.{ts,tsx,js,jsx}',
@@ -115,20 +115,15 @@ module.exports = {
     },
     {
       files: ['apps/backend/web/**/*.{ts,tsx,js,jsx}'],
-      excludedFiles: ["apps/backend/web/load-env.js", "**/*.d.ts"],
-      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+      excludedFiles: ['apps/backend/web/load-env.js'],
+      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
       parserOptions: {
         project: path.join(__dirname, './apps/backend/web/tsconfig.json'),
       },
     },
     {
       files: ['apps/frontend/**/*.{ts,tsx,js,jsx}'],
-      extends: [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:react-hooks/recommended',
-        'plugin:prettier/recommended',
-      ],
+      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'],
       parserOptions: {
         project: path.join(__dirname, './apps/frontend/tsconfig.json'),
       },
@@ -147,6 +142,13 @@ module.exports = {
             patterns: [...noRestrictedImportsConfig.patterns],
           },
         ],
+      },
+    },
+    {
+      files: ['apps/services/users/**/*.{ts,tsx,js,jsx}'],
+      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+      parserOptions: {
+        project: path.join(__dirname, './apps/services/users/tsconfig.json'),
       },
     },
     {

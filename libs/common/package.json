@@ -1,0 +1,14 @@
+{
+  "main": "dist/src/index.js",
+  "name": "@monorepo/shared-lib",
+  "scripts": {
+    "build": "yarn clean && yarn build:types",
+    "build:types": "run -T tsc -b .",
+    "build:ts": "yarn build",
+    "clean": "rm -rf dist",
+    "type-check": "yarn build:types"
+  },
+  "sideEffects": false,
+  "types": "dist/src/index.d.ts",
+  "version": "1.0.0"
+}

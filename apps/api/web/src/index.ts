@@ -23,10 +23,10 @@ export * from '@/routers';
 
 const PORT = envConfig.PORT;
 const services = [
-  // {
-  //   route: '/users',
-  //   target: '',
-  // },
+  {
+    route: '/users',
+    target: '',
+  },
   // {
   //   route: '/orders',
   //   target: '',
@@ -47,7 +47,12 @@ const buildServer = () => {
   const app = express();
 
   // middlwares
-  app.use(cors());
+  app.use(
+    cors({
+      origin: 'http://localhost:5173',
+      credentials: true,
+    }),
+  );
   app.use(compression());
   app.use(helmet()); // add security headers
   app.disable('x-powered-by'); // hide express server info

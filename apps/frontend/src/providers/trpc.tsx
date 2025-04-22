@@ -20,7 +20,7 @@ const TRPCProvider: React.FC<IProps> = ({ children }) => {
       links: [
         loggerLink(),
         httpBatchLink({
-          url: `${getAPIUrl()}/v1`,
+          url: `${getAPIUrl()}/api/trpc`,
           fetch: async (input, init?) => {
             const fetch = getFetch();
             return fetch(input, {

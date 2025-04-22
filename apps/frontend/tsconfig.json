@@ -34,7 +34,7 @@
   "exclude": ["node_modules", "dist"],
   "references": [
     {
-      "path": "../backend/web"
+      "path": "../api/web"
     }
   ]
 }

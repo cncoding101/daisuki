@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
-import type { components } from '@/api.d.ts';
+import { basicOutput } from '@/routers/schemas';
+import { RegisterInput } from '@/routers/schemas/auth';
 import { AppError, NotFoundError } from '@/utils/helpers/error';
 
 // in memory user data
@@ -19,9 +20,7 @@ export default async ({
   firstname,
   lastname,
   address,
-}: components['schemas']['Register']): Promise<{
-  message: string;
-}> => {
+}: RegisterInput['input']): Promise<basicOutput> => {
   // check if user exist
   const exists = users.find((user) => user.email == email);
   if (exists == null) throw new NotFoundError();

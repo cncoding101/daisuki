@@ -5,7 +5,7 @@ const live = () => {
 };
 
 const ready = () => {
-  const isReady = false;
+  const isReady = true;
 
   // anything you need to verify before confirming your application is ready
   // to start handling incoming requests.

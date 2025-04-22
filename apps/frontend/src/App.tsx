@@ -17,7 +17,7 @@ const App: React.FC<NoProps> = () => {
     <StrictMode>
       <HelmetProvider>
         <Helmet>
-          <title>{defaultHeaderInfo.title} 12312312</title>
+          <title>{defaultHeaderInfo.title}</title>
           <meta content={defaultHeaderInfo.description} name='description' />
           <link href='logo_head.jpg' rel='icon' />
         </Helmet>

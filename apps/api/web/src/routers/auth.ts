@@ -1,5 +1,5 @@
 import { basicOutputSchema } from './schemas';
-import { loginInputSchema, registerInputSchema } from './schemas/auth';
+import { loginInputSchema, loginOutputSchema, registerInputSchema } from './schemas/auth';
 import { login, register } from '@/controllers/auth';
 import { procedure, router } from '@/trpc';
 
@@ -13,7 +13,7 @@ const authRouter = router({
   login: procedure
     .meta({ openapi: { method: 'POST', path: '/login' } })
     .input(loginInputSchema)
-    .output(basicOutputSchema)
+    .output(loginOutputSchema)
     .query(login),
 });
 

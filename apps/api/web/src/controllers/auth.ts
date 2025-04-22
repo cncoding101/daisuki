@@ -18,9 +18,9 @@ const register = async ({ input }: RegisterInput) => {
 
 const login = async ({ input }: LoginInput) => {
   try {
-    const { message, data } = await auth.login(input);
+    const { message, token } = await auth.login(input);
 
-    return { message, token: data };
+    return { message, token };
   } catch (error) {
     throw new TRPCError({
       code: 'UNAUTHORIZED',

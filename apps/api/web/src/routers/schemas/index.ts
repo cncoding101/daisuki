@@ -11,4 +11,8 @@ const errorOutputSchema = z.object({
 
 const emptyInputSchema = z.void();
 
+type basicOutput = z.infer<typeof basicOutputSchema>;
+
+export type { basicOutput };
+
 export { basicOutputSchema, errorOutputSchema, emptyInputSchema };
