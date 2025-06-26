@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import tokenEntity from '@/entities/token';
-import { LoginInput, LoginOutput } from '@/routers/schemas/auth';
+import { LoginInput, LoginOutput } from '@/routers/trpc/schemas/auth';
 import { ValidationError } from '@/utils/helpers/error';
 
 export default async ({ email, password }: LoginInput['input']): Promise<LoginOutput> => {

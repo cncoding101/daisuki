@@ -4,7 +4,6 @@ import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-import { createProxyMiddleware, Options } from 'http-proxy-middleware';
 import pino from 'pino-http';
 import swaggerUi from 'swagger-ui-express';
 import { createOpenApiExpressMiddleware } from 'trpc-openapi';
@@ -14,32 +13,33 @@ import path from 'path';
 import createContext from './context';
 import envConfig from '@/config/sanitized-env';
 import errorHandler from '@/middlewares/global-error-handler';
-import appRouter from '@/routers';
+import httpAppRouter from '@/routers/http';
+import trpcAppRouter from '@/routers/trpc';
 import { ERROR404 } from '@/utils/constants/status-code';
 import logger from '@/utils/helpers/logger';
 import rateLimit from '@/utils/helpers/rate-limit';
 
-export * from '@/routers';
+export * from '@/routers/trpc';
 
 const PORT = envConfig.PORT;
-const services = [
-  {
-    route: '/users',
-    target: '',
-  },
-  // {
-  //   route: '/orders',
-  //   target: '',
-  // },
-  // {
-  //   route: '/payments',
-  //   target: '',
-  // },
-  // {
-  //   route: '/products',
-  //   target: '',
-  // },
-] as const;
+// const services = [
+//   {
+//     route: '/users',
+//     target: '',
+//   },
+//   // {
+//   //   route: '/orders',
+//   //   target: '',
+//   // },
+//   // {
+//   //   route: '/payments',
+//   //   target: '',
+//   // },
+//   // {
+//   //   route: '/products',
+//   //   target: '',
+//   // },
+// ] as const;
 const openapiPath = path.join(__dirname, '../openapi.json');
 const swaggerDocument = JSON.parse(fs.readFileSync(openapiPath, 'utf8'));
 
@@ -70,24 +70,25 @@ const buildServer = () => {
   app.use(
     '/api/trpc',
     createExpressMiddleware({
-      router: appRouter,
+      router: trpcAppRouter,
       createContext,
     }),
   );
-  app.use('/api', createOpenApiExpressMiddleware({ router: appRouter, createContext }));
+  app.use('/api', httpAppRouter);
+  app.use('/api', createOpenApiExpressMiddleware({ router: trpcAppRouter, createContext }));
 
   // setup proxy to microservices
-  services.forEach(({ route, target }) => {
-    const proxyOptions: Options = {
-      target,
-      changeOrigin: true,
-      pathRewrite: {
-        [`^${route}`]: '',
-      },
-    };
+  // services.forEach(({ route, target }) => {
+  //   const proxyOptions: Options = {
+  //     target,
+  //     changeOrigin: true,
+  //     pathRewrite: {
+  //       [`^${route}`]: '',
+  //     },
+  //   };
 
-    app.use(route, rateLimit, createProxyMiddleware(proxyOptions));
-  });
+  //   app.use(route, rateLimit, createProxyMiddleware(proxyOptions));
+  // });
 
   // TODO add authentication
 

@@ -1,6 +1,6 @@
 import { TRPCError } from '@trpc/server';
 import { auth } from '@/business';
-import { LoginInput, RegisterInput } from '@/routers/schemas/auth';
+import { LoginInput, RegisterInput } from '@/routers/trpc/schemas/auth';
 import { AppError } from '@/utils/helpers/error';
 
 const register = async ({ input }: RegisterInput) => {

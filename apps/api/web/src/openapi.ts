@@ -1,6 +1,6 @@
 import { generateOpenApiDocument } from 'trpc-openapi';
 import config from '@/config/sanitized-env';
-import appRouter from '@/routers';
+import appRouter from '@/routers/trpc';
 
 export default generateOpenApiDocument(appRouter, {
   title: 'Daisuki OpenApi',

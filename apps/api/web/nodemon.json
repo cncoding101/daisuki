@@ -2,5 +2,5 @@
   "watch": ["src"],
   "ignore": ["src/api.d.ts"],
   "ext": "ts, yaml",
-  "exec": "ts-node -r tsconfig-paths/register -r ./load-env.js"
+  "exec": "node --inspect -r ts-node/register -r tsconfig-paths/register -r ./load-env.js"
 }

@@ -3,12 +3,12 @@ syntax = "proto3";
 package user;
 
 service UserService {
-    rpc CreateUser(CreateUserDto) returns (User) {}
-    rpc SignIn(SigninDto) returns (User) {}
+    rpc Create(CreateUserRequestDto) returns (CreateUserResponseDto) {}
+    rpc SignIn(SigninDto) returns (CreateUserResponseDto) {}
 }
 
-message CreateUserDto {
-    string username= 2;
+message CreateUserRequestDto {
+    string email= 2;
     string password = 3;
     optional string firstname = 4;
     optional string lastname = 5;
@@ -19,10 +19,9 @@ message SigninDto {
     string password = 2;
 }
 
-message User {
+message CreateUserResponseDto {
     string id = 1;
-    string username= 2;
-    string password = 3;
+    string email= 2;
     optional string firstname = 4;
     optional string lastname = 5;
 }

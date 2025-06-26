@@ -6,7 +6,7 @@
       "@/*": ["src/*"]
     },
     "module": "commonjs",
-    "outDir": "dist"
+    "outDir": "../../dist"
   },
   "extends": ["../../../base-tsconfig.json"],
   "include": ["src/**/*", "./jest.config.ts"],

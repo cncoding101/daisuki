@@ -2,13 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Gateway Web",
+      "name": "Debug Web Api Gateway",
       "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/backend/web/build/src/server.js", // Path to your gateway entry point
-      "outFiles": ["${workspaceRoot}/backend/web/build/**/*.js"],
-      "skipFiles": ["<node_internals>/**"],
-      "preLaunchTask": "npm: build - backend/web"
+      "request": "attach",
+      "port": 9229
     },
     {
       "type": "node",
@@ -21,6 +18,19 @@
       "smartStep": true,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "User Service",
+      "runtimeExecutable": "yarn",
+      "cwd": "${workspaceFolder}/apps/services/user",
+      "runtimeArgs": ["start:debug", "--", "--inspect-brk"],
+      "autoAttachChildProcesses": true,
+      "restart": true,
+      "sourceMaps": true,
+      "stopOnEntry": false,
+      "console": "integratedTerminal"
     }
   ]
 }

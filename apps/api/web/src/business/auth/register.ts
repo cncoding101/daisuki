@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import { basicOutput } from '@/routers/schemas';
-import { RegisterInput } from '@/routers/schemas/auth';
+import { basicOutput } from '@/routers/trpc/schemas';
+import { RegisterInput } from '@/routers/trpc/schemas/auth';
 import { AppError, NotFoundError } from '@/utils/helpers/error';
 
 // in memory user data
