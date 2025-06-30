@@ -27,7 +27,7 @@ export class UserService {
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
-          throw new ForbiddenException('Credentials taken');
+          throw new RpcException({ code: status.INVALID_ARGUMENT, message: 'Credentials taken' });
         }
       }
 

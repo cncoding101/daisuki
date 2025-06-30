@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Web Api Gateway",
+      "name": "Web Api Gateway",
       "type": "node",
       "request": "attach",
       "port": 9229
@@ -20,17 +20,10 @@
       "internalConsoleOptions": "neverOpen"
     },
     {
-      "type": "node",
-      "request": "launch",
       "name": "User Service",
-      "runtimeExecutable": "yarn",
-      "cwd": "${workspaceFolder}/apps/services/user",
-      "runtimeArgs": ["start:debug", "--", "--inspect-brk"],
-      "autoAttachChildProcesses": true,
-      "restart": true,
-      "sourceMaps": true,
-      "stopOnEntry": false,
-      "console": "integratedTerminal"
+      "type": "node",
+      "request": "attach",
+      "port": 9330
     }
   ]
 }
